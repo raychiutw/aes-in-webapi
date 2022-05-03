@@ -1,0 +1,33 @@
+{
+	"info": {
+		"_postman_id": "f8c56cee-1ae3-45b5-b3ce-0bab023c89ad",
+		"name": "AES",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "AES 測試範例",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "+LzZJkiJnmrkblh5fsz0Zw=="
+				},
+				"url": {
+					"raw": "https://localhost:7039/WeatherForecast/aes",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7039",
+					"path": [
+						"WeatherForecast",
+						"aes"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

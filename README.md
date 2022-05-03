@@ -111,6 +111,8 @@ appsettings.
 
 ### 使用 Postman 測試
 
+[Postman Json](/postman/aes.postman.json)
+
 ### 補充
 
 [線上 AES 加解密工具](https://www.010tools.com/AES)
