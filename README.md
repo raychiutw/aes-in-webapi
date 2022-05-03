@@ -28,7 +28,7 @@ Install-Package NETCore.Encrypt -Version 2.1.0
 
 ### AesHelper 相關程式複製到專案
 
-[程式路徑](/src/AESSample/AESSample/AesHelper/)
+[程式路徑請點我](/src/AESSample/AesHelper/)
 
 - IAesCryptor.cs: 密碼器介面, 定義加解密方法
 - AesCryptor.cs: 密碼器實作
