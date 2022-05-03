@@ -128,16 +128,16 @@ appsettings.
 ```csharp
 
 // 加密
-var result = _cryptor.Encrypt(value)
+var result = _cryptor.Encrypt(value);
 
 // 解密
-var result = _cryptor.Decrypt(value)
+var result = _cryptor.Decrypt(value);
 
 // 泛型加密
-var result = _cryptor.Encrypt(value)
+var result = _cryptor.Encrypt(value);
 
 // 泛型解密
-var result = _cryptor.Decrypt<className>(value)
+var result = _cryptor.Decrypt<className>(value);
 ```
 
 > 抽換加解密套件
