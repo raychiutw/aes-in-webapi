@@ -40,7 +40,7 @@ namespace AESSample.AesHelper
             context.HttpContext.Response.ContentType = "text/plain";
             context.HttpContext.Response.StatusCode = 200;
 
-            await context.HttpContext.Response.WriteAsync(aesResponse);
+            await context.HttpContext.Response.WriteAsync(aesResponse ?? "");
         }
     }
 }

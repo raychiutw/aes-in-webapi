@@ -47,9 +47,9 @@ namespace AESSample.Controllers
 
         [HttpPost]
         [Route("aes")]
+        [TypeFilter(typeof(AesRequestFilter))]
         [TypeFilter(typeof(AesResponseFilter))]
-        public IEnumerable<WeatherForecast> PostAes(
-           [FromBody][ModelBinder(BinderType = typeof(AesModelBinder))] WeatherForecastParameter parameter)
+        public IEnumerable<WeatherForecast> PostAes(WeatherForecastParameter parameter)
         {
             return Enumerable.Range(1, parameter.Size)
                 .Select(index => new WeatherForecast
