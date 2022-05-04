@@ -120,3 +120,26 @@ appsettings.
 ### 完整範例
 
 [請點這裡](/src/AESSample/)
+
+### FAQ
+
+> 直接使用加解密
+
+```csharp
+
+// 加密
+var result = _cryptor.Encrypt(value);
+
+// 解密
+var result = _cryptor.Decrypt(value);
+
+// 泛型加密
+var result = _cryptor.Encrypt(value);
+
+// 泛型解密
+var result = _cryptor.Decrypt<className>(value);
+```
+
+> 抽換加解密套件
+
+請修改 `AesCryptor.cs` 加解密的實作
