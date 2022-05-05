@@ -46,10 +46,25 @@ namespace AESSample.Controllers
         }
 
         [HttpPost]
-        [Route("aes")]
+        [Route("aes1")]
+        [TypeFilter(typeof(AesResponseFilter))]
+        public IEnumerable<WeatherForecast> PostAes1([ModelBinder(BinderType = typeof(AesModelBinder))] WeatherForecastParameter parameter)
+        {
+            return Enumerable.Range(1, parameter.Size)
+                .Select(index => new WeatherForecast
+                {
+                    Date = DateTime.Now.AddDays(index),
+                    TemperatureC = Random.Shared.Next(-20, 55),
+                    Summary = Summaries[Random.Shared.Next(Summaries.Length)]
+                })
+                .ToArray();
+        }
+
+        [HttpPost]
+        [Route("aes2")]
         [TypeFilter(typeof(AesRequestFilter))]
         [TypeFilter(typeof(AesResponseFilter))]
-        public IEnumerable<WeatherForecast> PostAes(WeatherForecastParameter parameter)
+        public IEnumerable<WeatherForecast> PostAes2(WeatherForecastParameter parameter)
         {
             return Enumerable.Range(1, parameter.Size)
                 .Select(index => new WeatherForecast
