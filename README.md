@@ -6,9 +6,13 @@ ASP.NET Core 6 WebApi 專案使用 AES 範例
 
 呼叫 API 的 Request 與 Response 由 AES 加密(pkcs7padding + base64)
 
-> 使用客製化 ModelBinder, 將 Request Body AES 解密之後 Binding 至 parameter model
+Request 解密
 
-> 使用 Filter 將 Response 做 AES 加密
+- 方法1 ModelBinder: 將 Request Body 解密後, Binding 至 parameter model
+- 方法2 ResourceFiliter: 將 Request Body 解密後, 重新寫入 Request Body
+
+Response 加密
+- 使用 ActionFilter 將 Response 做 AES 加密
 
 ## 步驟
 
@@ -90,20 +94,42 @@ appsettings.
         }
 ```
 
-> 將參數類別綁定 AesModleBinder
+> 方法 1: AesModleBinder + AesResponseFilter
+
+Step1 將參數類別綁定 AesModleBinder
 
 `[ModelBinder(BinderType = typeof(AesModelBinder))] WeatherForecastParameter parameter`
 
-> 將 Response 加密輸出
+Step2 加上 AesResponseFilter
 
 `[TypeFilter(typeof(AesResponseFilter))]`
 
 ```csharp
 [HttpPost]
-        [Route("aes")]
+        [Route("aes1")]
         [TypeFilter(typeof(AesResponseFilter))]
-        public IEnumerable<WeatherForecast> PostAes(
-           [FromBody][ModelBinder(BinderType = typeof(AesModelBinder))] WeatherForecastParameter parameter)
+        public IEnumerable<WeatherForecast> PostAes([ModelBinder(BinderType = typeof(AesModelBinder))] WeatherForecastParameter parameter)
+        {
+           // 略
+        }
+```
+
+> 方法 2: AesRequestFilter + AesResponseFilter
+
+Step1 加上 AesRequestFilter
+
+`[TypeFilter(typeof(AesRequestFilter))]`
+
+Step2 加上 AesResponseFilter
+
+`[TypeFilter(typeof(AesResponseFilter))]`
+
+```csharp
+[HttpPost]
+        [Route("aes2")]
+        [TypeFilter(typeof(AesRequestFilter))]
+        [TypeFilter(typeof(AesResponseFilter))]
+        public IEnumerable<WeatherForecast> PostAes(WeatherForecastParameter parameter)
         {
            // 略
         }
