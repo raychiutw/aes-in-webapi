@@ -12,10 +12,10 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "+LzZJkiJnmrkblh5fsz0Zw=="
+					"raw": "vNxdkP7QwpyXqWUNvsxJNg=="
 				},
 				"url": {
-					"raw": "https://localhost:7039/WeatherForecast/aes",
+					"raw": "https://localhost:7039/WeatherForecast/aes1",
 					"protocol": "https",
 					"host": [
 						"localhost"
@@ -23,7 +23,7 @@
 					"port": "7039",
 					"path": [
 						"WeatherForecast",
-						"aes"
+						"aes1"
 					]
 				}
 			},
